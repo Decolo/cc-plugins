@@ -1,8 +1,12 @@
 {
-  "hooks": [
-    {
-      "event": "Stop",
-      "command": "${CLAUDE_PLUGIN_ROOT}/hooks/review-on-stop.sh"
-    }
-  ]
+  "hooks": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "${CLAUDE_PLUGIN_ROOT}/hooks/review-on-stop.sh",
+        "timeout": 120,
+        "statusMessage": "Checking for code changes to review..."
+      }
+    ]
+  }
 }

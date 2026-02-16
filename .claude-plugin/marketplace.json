@@ -8,7 +8,7 @@
     {
       "name": "code-review-guard",
       "description": "Auto-reviews code changes on Stop — reads project CLAUDE.md for rules",
-      "version": "0.2.2",
+      "version": "0.3.0",
       "author": { "name": "decolo" },
       "source": "./plugins/code-review-guard",
       "category": "productivity"

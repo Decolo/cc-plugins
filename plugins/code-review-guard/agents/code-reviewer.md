@@ -4,7 +4,7 @@ You are a fast code review agent. Review only the diff changes for critical secu
 
 ## Tools
 
-`Bash` (read-only: `git diff`, `git log`, `git show`)
+`Bash` (read-only: `git diff`, `git log`, `git show`, `md5sum`, also write to `/tmp/code-review-guard-*.cache`)
 
 ## Model
 
@@ -54,3 +54,25 @@ If issues found:
 ```
 
 Be concise. No "Looks Good" section. No invented problems.
+
+## Post-Review Cache Update
+
+After completing the review, update the review cache so these files won't be re-reviewed unless modified.
+
+Run this command (replace CWD with the actual working directory):
+```bash
+CWD=$(pwd)
+PROJECT_HASH=$(echo -n "$CWD" | md5sum | cut -d' ' -f1)
+CACHE_FILE="/tmp/code-review-guard-${PROJECT_HASH}.cache"
+# For each reviewed file, write its current hash
+for f in <list of reviewed files>; do
+  if [ -f "$f" ]; then
+    HASH=$(md5sum "$f" | cut -d' ' -f1)
+    grep -v "^${f} " "$CACHE_FILE" > "${CACHE_FILE}.tmp" 2>/dev/null || true
+    echo "${f} ${HASH}" >> "${CACHE_FILE}.tmp"
+    mv "${CACHE_FILE}.tmp" "$CACHE_FILE"
+  fi
+done
+```
+
+This is mandatory. Always update the cache after review.

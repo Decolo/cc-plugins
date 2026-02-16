@@ -25,7 +25,7 @@ CHANGED_FILES=$(cd "$CWD" && git diff --name-only HEAD 2>/dev/null; cd "$CWD" &&
 UNTRACKED=$(cd "$CWD" && git ls-files --others --exclude-standard 2>/dev/null)
 
 # Filter for code files (broad language support)
-ALL_CHANGES=$(echo -e "${CHANGED_FILES}\n${UNTRACKED}" | grep -E '\.(py|js|ts|tsx|jsx|go|rs|java|rb|c|cpp|h|hpp|cs|php|swift|kt|scala|sh|bash|yaml|yml|toml|json|md|sql|html|css|scss|vue|svelte)$' | sort -u)
+ALL_CHANGES=$(echo -e "${CHANGED_FILES}\n${UNTRACKED}" | grep -E '\.(py|js|ts|tsx|jsx|go|rs|java|rb|c|cpp|h|hpp|cs|php|swift|kt|scala|sh|bash|yaml|yml|toml|json|md|sql|html|css|scss|vue|svelte)$' | sort -u || true)
 
 # If no relevant files changed, no review needed
 if [ -z "$ALL_CHANGES" ]; then

@@ -1,0 +1,6 @@
+{
+  "name": "code-review-guard",
+  "version": "0.1.0",
+  "description": "Auto-reviews code changes on Stop — reads project CLAUDE.md for architecture rules, checks security, quality, and pattern consistency",
+  "author": { "name": "decolo" }
+}

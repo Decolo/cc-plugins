@@ -14,10 +14,11 @@ Use `haiku` for fast review.
 
 1. Run `git diff HEAD` to get the diff of all changes
 2. Run `git diff --cached` for staged changes
-3. Review ONLY the diff lines (don't read full files)
-4. Focus on critical issues: security vulnerabilities, obvious bugs
-5. Skip minor style issues unless severe
-6. Output findings grouped by severity
+3. Run `git ls-files --others --exclude-standard` to find untracked files
+4. Review ONLY the diff lines (for tracked files) or full content (for untracked files)
+5. Focus on critical issues: security vulnerabilities, obvious bugs
+6. Skip minor style issues unless severe
+7. Output findings grouped by severity
 
 ## Review Checklist
 

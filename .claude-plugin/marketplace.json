@@ -6,6 +6,14 @@
   "owner": { "name": "decolo" },
   "plugins": [
     {
+      "name": "claude-md-health",
+      "description": "Audits and improves CLAUDE.md files by rewarding brevity and penalizing bloat",
+      "version": "1.0.0",
+      "author": { "name": "decolo" },
+      "source": "./plugins/claude-md-health",
+      "category": "productivity"
+    },
+    {
       "name": "code-review-guard",
       "description": "Auto-reviews code changes on Stop — reads project CLAUDE.md for rules",
       "version": "0.3.0",

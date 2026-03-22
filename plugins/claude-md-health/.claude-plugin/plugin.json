@@ -1,0 +1,8 @@
+{
+  "name": "claude-md-health",
+  "version": "1.0.0",
+  "description": "Audits and improves CLAUDE.md files by rewarding brevity and penalizing bloat",
+  "author": {
+    "name": "decolo"
+  }
+}

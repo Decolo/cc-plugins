@@ -7,6 +7,7 @@ Read all of the following that exist:
 2. `./.claude/CLAUDE.md`
 3. `./.claude/rules/*.md`
 4. `~/.claude/CLAUDE.md`
+5. `~/.claude/rules/*.md`
 
 ## Step 2: Run a silent audit
 
@@ -50,8 +51,7 @@ For each restructure, show:
 Content to move:
 <content block>
 
-Replace in source with:
-@.claude/rules/<topic>.md
+Remove from source entirely. Do not add an @import — `.claude/rules/` files are discovered and loaded automatically by Claude Code without imports. Unscoped rules load at launch; path-scoped rules (with `paths:` frontmatter) load when matching files are opened. Importing them via @import forces eager loading and usually defeats the purpose.
 ```
 
 ### C. Additions (lowest priority, only if genuinely missing)

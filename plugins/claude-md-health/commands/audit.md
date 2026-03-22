@@ -7,6 +7,7 @@ Discover and read all of the following:
 2. `./.claude/CLAUDE.md` (local project, if it exists)
 3. `./.claude/rules/` (all `.md` files, if directory exists)
 4. `~/.claude/CLAUDE.md` (user global, if it exists)
+5. `~/.claude/rules/` (all `.md` files, if directory exists)
 
 Use the Read and Glob tools to find and read these files. Do not edit any files.
 
@@ -34,7 +35,7 @@ Content Claude can infer by reading the codebase itself scores zero. This includ
 - **0**: Mostly boilerplate or inferable content
 
 ### 3. Progressive disclosure (20 pts)
-- **20**: Root CLAUDE.md is minimal; detailed topic rules live in `.claude/rules/` files linked via `@path` imports; each rules file is focused on one domain
+- **20**: Root CLAUDE.md is minimal; detailed topic rules live in `.claude/rules/` files with focused scope; path-scoped rules use `paths:` frontmatter for lazy loading; no `@path` imports of rules files (they load automatically)
 - **14**: Some rules split out, but root still contains domain-specific detail that could be extracted
 - **8**: Everything in root CLAUDE.md with no rules/ files despite complexity
 - **0**: Monolithic file with no structure
@@ -80,15 +81,28 @@ Top issues:
 3. <third issue>
 ```
 
-Then end with a summary:
+Then end with a layered summary:
 
 ```
 ## Overall Health Summary
+
+### Project Scope
 | File | Score | Grade |
 |------|-------|-------|
 | ...  |       |       |
 
-**Overall grade: X**
+### Global Scope
+| File | Score | Grade |
+|------|-------|-------|
+| ...  |       |       |
+
+### Cross-layer Conflicts
+List any rules that contradict between project and global files. Note: Claude Code loads global rules first, then project rules — project rules have higher precedence at runtime.
+- `<global file>` says X, but `<project file>` says Y — project rule wins at runtime; flag if the global rule should be updated or removed
+
+If none found: "No cross-layer conflicts detected."
+
+**Overall grade: X** (weighted average across all files)
 
 Highest-priority fix: <single most impactful change across all files>
 ```

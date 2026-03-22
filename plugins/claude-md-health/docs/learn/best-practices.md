@@ -24,6 +24,9 @@ Only content Claude **cannot infer by reading your codebase**:
 | Domain terminology (e.g. "workspace" ≠ "organization") | "Write clean code" |
 | Package manager if not npm | Language conventions Claude already knows |
 | One-sentence project description | File paths (they change) |
+| Coding style preferences not enforceable by linters (e.g. prefer functional style, avoid class components) | Formatting rules already in .eslintrc / .prettierrc |
+| Tool/library choices not obvious from dependencies (e.g. "use Zod for validation, not Yup") | Libraries already the only option in package.json |
+| Workflow rules agents can't infer (e.g. always run tests before committing) | Standard git conventions |
 
 ### The one-liner project description
 
@@ -41,8 +44,8 @@ Claude Code loads multiple CLAUDE.md files and merges them. More specific locati
 
 | Location | Scope | Use for |
 |---|---|---|
-| `./CLAUDE.md` or `./.claude/CLAUDE.md` | Project (versioned) | Team coding standards, architecture decisions |
-| `~/.claude/CLAUDE.md` | User (all projects) | Personal tool preferences, code style |
+| `./CLAUDE.md` or `./.claude/CLAUDE.md` | Project (versioned) | Team coding standards, architecture decisions, coding style preferences and tool choices not expressible in config files |
+| `~/.claude/CLAUDE.md` | User (all projects) | Personal tool preferences, code style, workflow rules (e.g. always enter plan mode for non-trivial tasks, prefer subagents for research) |
 | `subdir/CLAUDE.md` | Directory (lazy-loaded) | Subdirectory-specific rules |
 
 **Lazy loading**: Subdirectory CLAUDE.md files are only loaded when Claude reads files in that directory. This saves context budget automatically.
@@ -68,7 +71,7 @@ paths:
 ---
 ```
 
-The root CLAUDE.md then becomes a minimal index:
+The root CLAUDE.md then becomes minimal — no imports needed:
 
 ```markdown
 This is a Node.js GraphQL API using Prisma.
@@ -77,10 +80,9 @@ Package manager: pnpm
 
 Build: pnpm build
 Test: pnpm test
-
-@.claude/rules/typescript.md
-@.claude/rules/testing.md
 ```
+
+Rules files in `.claude/rules/` are discovered and loaded automatically by Claude Code. Unscoped rules load at launch; path-scoped rules (with `paths:` frontmatter) load only when matching files are opened. Do not use `@path` imports to reference rules files — this forces eager loading and defeats the lazy-loading benefit.
 
 ## Stale documentation is actively harmful
 

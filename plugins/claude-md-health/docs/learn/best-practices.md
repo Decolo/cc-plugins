@@ -41,7 +41,6 @@ Claude Code loads multiple CLAUDE.md files and merges them. More specific locati
 
 | Location | Scope | Use for |
 |---|---|---|
-| `/Library/Application Support/ClaudeCode/CLAUDE.md` | Org-wide (IT managed) | Company security policies, compliance |
 | `./CLAUDE.md` or `./.claude/CLAUDE.md` | Project (versioned) | Team coding standards, architecture decisions |
 | `~/.claude/CLAUDE.md` | User (all projects) | Personal tool preferences, code style |
 | `subdir/CLAUDE.md` | Directory (lazy-loaded) | Subdirectory-specific rules |

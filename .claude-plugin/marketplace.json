@@ -20,6 +20,14 @@
       "author": { "name": "decolo" },
       "source": "./plugins/code-review-guard",
       "category": "productivity"
+    },
+    {
+      "name": "compaction-counter",
+      "description": "Track compaction count per session with progressive status warnings when context degrades",
+      "version": "1.0.0",
+      "author": { "name": "decolo" },
+      "source": "./plugins/compaction-counter",
+      "category": "productivity"
     }
   ]
 }

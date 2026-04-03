@@ -1,0 +1,22 @@
+{
+  "name": "compaction-counter",
+  "version": "1.0.0",
+  "description": "Track compaction count per session with status warnings when context degrades",
+  "author": {
+    "name": "decolo"
+  },
+  "keywords": ["compaction", "context", "session", "monitoring"],
+  "hooks": {
+    "PostCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/compact-counter.sh || true"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "chrome-cdp",
+  "version": "1.0.0",
+  "description": "Give your AI agent access to your live Chrome session via CDP — connects to tabs you already have open",
+  "author": {
+    "name": "decolo"
+  },
+  "keywords": ["chrome", "cdp", "browser", "devtools", "automation"]
+}

@@ -28,6 +28,14 @@
       "author": { "name": "decolo" },
       "source": "./plugins/compaction-counter",
       "category": "productivity"
+    },
+    {
+      "name": "chrome-cdp",
+      "description": "Give your AI agent access to your live Chrome session via CDP — connects to tabs you already have open",
+      "version": "1.0.0",
+      "author": { "name": "decolo" },
+      "source": "./plugins/chrome-cdp",
+      "category": "productivity"
     }
   ]
 }
